@@ -1,0 +1,28 @@
+"""Start a named copy in Nonapi copier, then poll its operation status.
+
+Run: python copy/start_one_copy.py
+Python 3.9+; keep _copy_actions.py alongside this file.
+"""
+
+import sys
+from _copy_actions import run_action
+
+SERVER_ADDRESS = "http://127.0.0.1"
+PORT = 52895
+COPY_NAME = "CP261028195530"
+TIMEOUT_SECONDS = 5
+POLL_ATTEMPTS = 5
+
+# POST /start_one_copy
+# Content-Type: application/json
+# {"name": "CP261028195530"}
+# Response: {"success": true, "message": "processed"}
+# This requests Start for the named copy; poll status to check the result.
+# The helper polls GET /query_all_copies once per second, up to five times,
+# selects COPY_NAME, and checks operation_status == "On".
+# Names are case-sensitive and must identify one non-deleted copy; duplicates return 409.
+# Repeating Start does not pause a copy that is already On.
+
+if __name__ == "__main__":
+    sys.exit(run_action(SERVER_ADDRESS, PORT, "start_one_copy", TIMEOUT_SECONDS,
+                        POLL_ATTEMPTS, name=COPY_NAME))

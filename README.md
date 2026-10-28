@@ -1,9 +1,18 @@
 # Nonapi copier Local Control Python examples
 
+https://nonapicopier.com
+
+Nonapi copier runs independently without requiring trading platform installations or EAs.
+It uses trading platform emulation rather than official trading APIs and supports
+cTrader, MetaTrader 4, MetaTrader 5, TradeLocker, and Tradovate in one application.
+
+User guide: https://nonapicopier.com/trade-copier-docs
+
+## Local Control programming interface (v2.36+)
+
 Use Python to query and control the running Nonapi copier app over local HTTP.
 Examples use Python 3.9+ and the standard library; no package installation or token
-is required. Open Nonapi copier, log in, and enable **Local Control?** in General
-Settings before running an example.
+is required.
 
 ## Query all accounts
 
